@@ -2,8 +2,8 @@ using System;
 
 public class Tarjeta{
   //Constantes propias del sistema de la tarjeta
-  private const float tarifa_basica = 940;
-  private const float saldo_max = 9900;
+    private const float saldo_max = 9900;
+    private const float saldo_negativo_max = -480;
 
   public float saldo{ get; private set; }
 
@@ -17,6 +17,10 @@ public class Tarjeta{
       saldo = saldo_inicial;
     }
   }
+  
+  public void actualizar_saldo(float monto_a_actualizar){
+      saldo = saldo - monto_a_actualizar;
+    }  
 
   //Metodo para cargar saldo a la tarjeta, devolviendo true o false dependiendo si la operacion fue existosa o no
   public bool CargarSaldo(float monto_carga) {
@@ -38,15 +42,6 @@ public class Tarjeta{
     }
   }
 
-  //Metodo para el pago del pasaje
-   public virtual bool PagarPasaje() {
-    if (saldo >= tarifa_basica) {
-      saldo -= tarifa_basica;
-      return true;
-    }
-    return false; // Si el saldo es insuficiente
-  }
-
   //Verificar si el monto de carga es un monto válido
   private bool EsCargaValida(float monto_carga){
     return monto_carga == 2000 || monto_carga == 3000 || monto_carga == 4000 ||
@@ -54,39 +49,7 @@ public class Tarjeta{
      monto_carga == 8000 || monto_carga == 9000;
   }
   
-  public class MedioBoleto : Tarjeta {
-    private const float tarifa_medio_boleto = tarifa_basica / 2;
-
-    public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {}
-
-    public override bool PagarPasaje() {
-      if (saldo >= tarifa_medio_boleto || saldo >= Tarjeta.saldo_negativo_max) {
-        saldo -= tarifa_medio_boleto;
-        return true;
-      }
-      return false;
-    }
-  }
-
-  public class GratuitoJubilados : Tarjeta {
-    public GratuitoJubilados(float saldo_inicial) : base(saldo_inicial) {}
-
-    public override bool PagarPasaje() {
-      Console.WriteLine("Pasaje gratuito.");
-      Console.WriteLine($"Saldo restante {saldo}");
-      return true;
-    }
-  }
-
-  public class GratuitoEstudiantes : Tarjeta {
-    public GratuitoEstudiantes(float saldo_inicial) : base(saldo_inicial) {}
-
-    public override bool PagarPasaje() {
-      Console.WriteLine("Pasaje gratuito.");
-      Console.WriteLine($"Saldo restante {saldo}");
-      return true;
-    }
-  }
+  
   
   
 }
