@@ -20,8 +20,13 @@ namespace TpSube {
 
       public float obtener_tarifa(Tarjeta tarjeta){
         if(tarjeta is MedioBoleto){
-            return tarifa_medio;
-        }       
+		if (!medioBoleto.PuedeUsarse()) {
+			Console.WriteLine("Debe esperar 5 minutos entre viajes para usar el medio boleto.");
+                    	return tarifa_basica;
+                }
+    		medioBoleto.RegistrarUso();
+            	return tarifa_medio;
+        }
         if(tarjeta is GratuitoJubilados || tarjeta is GratuitoEstudiantes){
             return tarifa_gratuito;
         }
