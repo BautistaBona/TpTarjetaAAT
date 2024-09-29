@@ -22,7 +22,9 @@ namespace TpSube {
         
         // Método para mostrar la información del boleto
         public void MostrarBoleto() {
-          Console.WriteLine($"Boleto de la línea: {LineaColectivo}");
+          Console.WriteLine($"Fecha y Hora: ${FechaDelPasaje}");
+          Console.WriteLine($"Línea: {LineaColectivo}");
+          Console.WriteLine($"Tarjeta: ${TipoDeTarjeta}");
           Console.WriteLine($"Costo del pasaje: ${CostoDelPasaje}");
           Console.WriteLine($"Saldo restante en la tarjeta: ${SaldoRestante}");
         }
