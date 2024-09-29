@@ -61,7 +61,7 @@ namespace TpSube {
     public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {}
 	private DateTime? ultima_vez_usada;  // Registrar el último uso
 
-        public Medio_Boleto(float saldo_inicial) : base(saldo_inicial) {
+        public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {
             ultima_vez_usada = null; 
         }
 
