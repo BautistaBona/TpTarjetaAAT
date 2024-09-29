@@ -4,7 +4,6 @@ namespace TpSube {
   public class Tarjeta {
     private const float saldo_max = 9900;
     private const float saldo_negativo_max = -480;
-    
     public float saldo { get; protected set; }
 
     public Tarjeta(float saldo_inicial) {
@@ -55,18 +54,27 @@ namespace TpSube {
              monto_carga == 5000 || monto_carga == 6000 || monto_carga == 7000 ||
              monto_carga == 8000 || monto_carga == 9000;
     }
+
+    public string obtener_tipo_tarjeta(Tarjeta tarjeta){
+      string tipo_tarjeta  = tarjeta.GetType().ToString();
+      tipo_tarjeta =  tipo_tarjeta.Replace("_"," ");
+      return tipo_tarjeta;
+    }
+    
   }
 
-  public class MedioBoleto : Tarjeta {
-    public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {}
+  public class Medio_Boleto : Tarjeta {
+    public Medio_Boleto(float saldo_inicial) : base(saldo_inicial) {}
 
   }
 
-  public class GratuitoJubilados : Tarjeta {
-    public GratuitoJubilados(float saldo_inicial) : base(saldo_inicial) {}
+  public class Gratuito_Jubilados : Tarjeta {
+    public Gratuito_Jubilados(float saldo_inicial) : base(saldo_inicial) {}
   }
 
-  public class GratuitoEstudiantes : Tarjeta {
-    public GratuitoEstudiantes(float saldo_inicial) : base(saldo_inicial) {}
+  public class Gratuito_Estudiantes : Tarjeta {
+    public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) {}
   }
 }
+
+

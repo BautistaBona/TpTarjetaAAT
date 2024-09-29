@@ -19,10 +19,10 @@ namespace TpSube {
       }
 
       public float obtener_tarifa(Tarjeta tarjeta){
-        if(tarjeta is MedioBoleto){
+        if(tarjeta is Medio_Boleto){
             return tarifa_medio;
         }       
-        if(tarjeta is GratuitoJubilados || tarjeta is GratuitoEstudiantes){
+        if(tarjeta is Gratuito_Jubilados || tarjeta is Gratuito_Estudiantes){
             return tarifa_gratuito;
         }
         else{
@@ -47,7 +47,7 @@ namespace TpSube {
       // Método para pagar con la tarjeta
       public Boleto PagarCon(Tarjeta tarjeta) {
           if (PagarPasaje(tarjeta)) {
-              return new Boleto(this, tarjeta.saldo);
+              return new Boleto(this, tarjeta);
           }
           return null; // No se pudo pagar, saldo insuficiente
       }
