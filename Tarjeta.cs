@@ -63,9 +63,28 @@ namespace TpSube {
     
   }
 
-  public class Medio_Boleto : Tarjeta {
-    public Medio_Boleto(float saldo_inicial) : base(saldo_inicial) {}
+  public class MedioBoleto : Tarjeta {
+    public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {}
+	private DateTime? ultima_vez_usada;  // Registrar el último uso
 
+        public MedioBoleto(float saldo_inicial) : base(saldo_inicial) {
+            ultima_vez_usada = null; 
+        }
+
+        // Metodo para verificar si han pasado al menos 5 minutos desde el último uso
+        public bool PuedeUsarse() {
+            if (ultima_vez_usada == null) {
+                return true; 
+            }
+
+            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_vez_usada.Value; // Calculo el tiempo transcurrido
+            return tiempo_transcurrido.TotalMinutes >= 5;
+        }
+
+        // Actualiza el registro
+        public void RegistrarUso() {
+            ultima_vez_usada = DateTime.Now;
+        }
   }
 
   public class Gratuito_Jubilados : Tarjeta {
