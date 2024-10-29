@@ -34,17 +34,17 @@ namespace TarjetaTest
         [Test]
         public void RecargaConSaldoPendienteTest()
         {
-            // Cargar un monto que exceda el saldo máximo permitido
-            tarjetaMedioBoleto.CargarSaldo(1470); // Cargamos un monto que excede el saldo máximo de 36,000
-            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000)); // Verifica que el saldo sea el máximo
-            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(470)); // Verifica que haya saldo pendiente
+            
+            tarjetaMedioBoleto.CargarSaldo(1470); 
+            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000)); 
+            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(470)); 
 
             // Simulamos un uso de la tarjeta (debería reducir el saldo)
-            tarjetaMedioBoleto.RegistrarUso(); // Registra un viaje, lo que reduce el saldo en 2000
+            tarjetaMedioBoleto.RegistrarUso(); 
 
             
-            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000-470)); // El saldo debería ser 34,000 después de usar
-            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(0)); // El saldo pendiente debería ser 0
+            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000-470)); 
+            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(0)); 
         }
 
         [Test]
@@ -53,25 +53,25 @@ namespace TarjetaTest
             tarjetaGratuito.CargarSaldo(1000);
             float saldoInicial = tarjetaMedioBoleto.saldo;
 
-            // Realiza un viaje (simula el pago)
-            tarjetaMedioBoleto.RegistrarUso(); // Llama al método sin esperar un valor de retorno
+            
+            tarjetaMedioBoleto.RegistrarUso(); 
 
-            // Validaciones
-            Assert.That(tarjetaMedioBoleto.saldo, Is.LessThan(saldoInicial)); // Verifica que el saldo haya disminuido
+            
+            Assert.That(tarjetaMedioBoleto.saldo, Is.LessThan(saldoInicial)); 
         }
 
         // Test para validar el pago sin saldo suficiente
         [Test]
         public void PagarSinSaldoGratuitoTest()
         {
-            tarjetaGratuito.CargarSaldo(0); // Deja la tarjeta sin saldo
+            tarjetaGratuito.CargarSaldo(0); 
             float saldoInicial = tarjetaGratuito.saldo;
 
-            // Intenta realizar un viaje (simula el pago)
-            tarjetaGratuito.RegistrarUso(); // Llama al método sin esperar un valor de retorno
+           
+            tarjetaGratuito.RegistrarUso(); 
 
-            // Validaciones
-            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(saldoInicial)); // Verifica que el saldo sigue siendo el mismo
+            
+            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(saldoInicial)); 
         }
 
         // Simular que pasa el tiempo de 5 minutos en Medio Boleto
@@ -80,8 +80,8 @@ namespace TarjetaTest
         {
             tarjetaMedioBoleto.RegistrarUso(); // Registra el primer uso
 
-            // Simulamos que han pasado 5 minutos
-            Thread.Sleep(300000); // Cambié a 300000ms (5 minutos)
+            
+            Thread.Sleep(300000); 
 
             // Intentamos registrar otro uso
             bool puedeUsarse = tarjetaMedioBoleto.PuedeUsarse();
@@ -97,7 +97,7 @@ namespace TarjetaTest
             tarjetaGratuito.RegistrarUso();
 
             // Verificamos que el saldo se ha reducido correctamente
-            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(35000)); // Debe haber descontado el costo del boleto
+            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(35000)); 
         }
 
         // Test para validar que el monto del boleto pagado con Medio Boleto es siempre la mitad del normal
