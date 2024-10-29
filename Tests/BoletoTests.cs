@@ -12,7 +12,7 @@ namespace BoletoTest
         public void Setup()
         {
             tarjeta = new Tarjeta(5000); // Inicializa con saldo suficiente
-            colectivo = new Colectivo("Línea 1"); // Asumiendo que tienes un constructor para Colectivo
+            colectivo = new Colectivo("Línea 1");
         }
 
         // Test para crear un boleto con tarjeta
