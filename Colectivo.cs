@@ -35,15 +35,14 @@ namespace TpSube
             }
             if (tarjeta is Gratuito_Jubilados jubilado)
             {
-                if (jubilado.PuedeViajar())
+                if (jubilado.PuedeUsarse())
                 {
-                    jubilado.RegistrarViaje();
                     return tarifa_gratuito;
                 }
             }
             if (tarjeta is Gratuito_Estudiantes estudiante)
             {
-                if (estudiante.PuedeViajar())
+                if (estudiante.PuedeUsarse())
                 {
                     estudiante.RegistrarViaje();
                     return tarifa_gratuito;
@@ -52,24 +51,48 @@ namespace TpSube
             return tarifa_basica;
         }
 
+        public float Aplicar_descuentos_x_usos(Tarjeta tarjeta, float tarifa){ 
+            int usos = tarjeta.Obtener_cant_usos_mes();
+            if (usos > 0 && usos <= 29)
+            {
+                return tarifa_basica;
+            }
+            if (usos > 29 && usos <= 79)
+            {
+                return (float)(tarifa_basica * 0.2);
+            }
+            if (usos > 79 && usos <= 80)
+            {
+                return (float)(tarifa_basica * 0.25);
+            }
+            else
+            {
+                return tarifa_basica;
+            }
+        }
+
+
         //se encarga el colectivo de cobrar el pasaje
         public bool PagarPasaje(Tarjeta tarjeta)
         {
-            if (!tarjeta.PuedeUsarse())
-            {
-                return false; // No se puede cobrar si no se puede usar
+            if(!tarjeta.PuedeUsarse()){
+            	return false;
             }
-
+            
             float tarifa = obtener_tarifa(tarjeta);
+            if (tarjeta.GetType() == typeof(Tarjeta))
+            {
+                tarifa = Aplicar_descuentos_x_usos(tarjeta, tarifa);
+            }
             if (tarjeta.saldo - tarifa >= tarjeta.obtener_saldo_negativo_maximo())
             {
                 float monto_a_actualizar = tarjeta.saldo - tarifa;
                 tarjeta.actualizar_saldo(monto_a_actualizar);
-                tarjeta.RegistrarUso(); // Registrar el uso solo si se pudo cobrar
+                tarjeta.RegistrarUso();
                 return true;
             }
             return false;
         }
-
     }
 }
+

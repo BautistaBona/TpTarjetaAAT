@@ -6,9 +6,10 @@ namespace TpSube
     {
         private const float saldo_max = 36000;  // actualizo a 36000 
         private const float saldo_negativo_max = -480;
-        public float saldo_pendiente;  //atributo para el saldo pendiente
+        private float saldo_pendiente;  //atributo para el saldo pendiente
         public float saldo { get; protected set; }
         private DateTime? ultima_vez_usada;
+        private int cantidad_usos_mes;
 
         public Tarjeta(float saldo_inicial)
         {
@@ -28,6 +29,11 @@ namespace TpSube
         public float obtener_saldo_negativo_maximo()
         {
             return saldo_negativo_max;
+        }
+
+        public int Obtener_cant_usos_mes()
+        { 
+            return cantidad_usos_mes;
         }
 
         public void actualizar_saldo(float monto_a_actualizar)
@@ -50,15 +56,21 @@ namespace TpSube
             saldo -= monto_a_actualizar;
         }
 
-        public void RegistrarUso()
+        public virtual void RegistrarUso()
         {
+            if(ultima_vez_usada.Value.Month != DateTime.Now.Month || ultima_vez_usada == null) 
+            {
+                cantidad_usos_mes = 0;
+            }
             ultima_vez_usada = DateTime.Now;
+            cantidad_usos_mes++; 
         }
 
         public virtual bool PuedeUsarse()
         {
             return true;
         }
+
 
         public bool CargarSaldo(float monto_carga)
         {
@@ -83,7 +95,7 @@ namespace TpSube
                     saldo += monto_carga;
                 }
 
-                // Gestionar saldo pendiente si excede el máximo
+                // gestionar saldo pendiente si excede el máximo
                 if (saldo > saldo_max)
                 {
                     saldo_pendiente = saldo - saldo_max;  // asignamos el exceso como saldo pendiente
@@ -93,15 +105,13 @@ namespace TpSube
                 else if (saldo_pendiente > 0 && saldo < saldo_max)
                 {
                     float espacioDisponible = saldo_max - saldo;
-                    if (saldo_pendiente <= espacioDisponible)
-                    {
-                        saldo += saldo_pendiente;
-                        saldo_pendiente = 0;
+                    if(saldo_pendiente <= espacioDisponible){
+                    	saldo += saldo_pendiente;
+                    	saldo_pendiente = 0; 
                     }
-                    else
-                    {
-                        saldo += espacioDisponible;
-                        saldo_pendiente -= espacioDisponible;
+                    else{
+                    	saldo += espacioDisponible;
+                    	saldo_pendiente -= espacioDisponible
                     }
                 }
 
@@ -110,7 +120,6 @@ namespace TpSube
             }
             return false;
         }
-
 
         private bool EsCargaValida(float monto_carga)
         {
@@ -129,41 +138,36 @@ namespace TpSube
 
     public class Medio_Boleto : Tarjeta
     {
-        private DateTime? ultima_vez_usada; // Almacena la última vez que se usó la tarjeta
-        private const float costoViaje = 470; // Definir el costo del viaje
+        private DateTime? ultima_fecha_viaje;  // Registrar el último uso
+        private const float costoViaje = 470;
 
         public Medio_Boleto(float saldo_inicial) : base(saldo_inicial)
         {
-            ultima_vez_usada = null; // Se inicializa a null
+            ultima_fecha_viaje = null;
         }
-
-        public void RegistrarUso()
+        
+        
+        public override void RegistrarUso()
         {
-            if (PuedeUsarse())
-            {
-                ultima_vez_usada = DateTime.Now; // Actualiza la última vez usada
-                actualizar_saldo(costoViaje); // Reduce el saldo al registrar el uso
-            }
-            else
-            {
-                throw new InvalidOperationException("No se puede registrar uso: debe esperar 5 minutos.");
+            if(PuedeUsarse()){
+            	ultima_fecha_viaje = DateTime.Now;
+                actualizar_saldo(costoViaje);
             }
         }
 
+        // Metodo para verificar si han pasado al menos 5 minutos desde el último uso
         public override bool PuedeUsarse()
         {
-            // Permite el uso si nunca se ha utilizado
-            if (ultima_vez_usada == null)
+            if (ultima_fecha_viaje == null)
             {
                 return true;
             }
 
-            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_vez_usada.Value;
-            return tiempo_transcurrido.TotalMinutes >= 5; // Retorna verdadero si han pasado 5 minutos
+            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_fecha_viaje.Value; // Calculo el tiempo transcurrido
+            return tiempo_transcurrido.TotalMinutes >= 5;
         }
+        
     }
-
-
 
     public class Gratuito_Jubilados : Tarjeta
     {
@@ -172,7 +176,7 @@ namespace TpSube
 
         public Gratuito_Jubilados(float saldo_inicial) : base(saldo_inicial) { }
 
-        public bool PuedeViajar()
+        public override bool PuedeUsarse()
         {
             DateTime hoy = DateTime.Now.Date;
 
@@ -193,7 +197,7 @@ namespace TpSube
             return false;
         }
 
-        public void RegistrarViaje()
+        public override void RegistrarUso()
         {
             viajes_del_dia++;
         }
@@ -204,9 +208,9 @@ namespace TpSube
         private int viajes_del_dia = 0; // Contador de viajes por día
         private DateTime ultima_fecha_viaje = DateTime.Now.Date; // Fecha del último viaje
 
-        public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) { }
+        public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) {}
 
-        public bool PuedeViajar()
+        public override bool PuedeUsarse()
         {
             DateTime hoy = DateTime.Now.Date;
 
@@ -227,11 +231,10 @@ namespace TpSube
             return false;
         }
 
-        public void RegistrarViaje()
+        public override void RegistrarUso()
         {
             viajes_del_dia++;
         }
     }
 }
-
 
