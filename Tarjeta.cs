@@ -6,7 +6,7 @@ namespace TpSube
     {
         private const float saldo_max = 36000;  // actualizo a 36000 
         private const float saldo_negativo_max = -480;
-        private float saldo_pendiente;  //atributo para el saldo pendiente
+        public float saldo_pendiente;  //atributo para el saldo pendiente
         public float saldo { get; protected set; }
         private DateTime? ultima_vez_usada;
 
@@ -60,7 +60,6 @@ namespace TpSube
             return true;
         }
 
-
         public bool CargarSaldo(float monto_carga)
         {
             if (EsCargaValida(monto_carga))
@@ -84,16 +83,26 @@ namespace TpSube
                     saldo += monto_carga;
                 }
 
-                // gestionar saldo pendiente si excede el máximo
+                // Gestionar saldo pendiente si excede el máximo
                 if (saldo > saldo_max)
                 {
                     saldo_pendiente = saldo - saldo_max;  // asignamos el exceso como saldo pendiente
                     saldo = saldo_max;
                     Console.WriteLine($"Saldo máximo excedido. Se ha cargado hasta llegar a $36000 y el saldo pendiente es de ${saldo_pendiente}");
                 }
-                else if (saldo_pendiente > 0)
+                else if (saldo_pendiente > 0 && saldo < saldo_max)
                 {
-                    Console.WriteLine($"Tiene un saldo pendiente de ${saldo_pendiente}. Se acreditará automáticamente con el uso de la tarjeta.");
+                    float espacioDisponible = saldo_max - saldo;
+                    if (saldo_pendiente <= espacioDisponible)
+                    {
+                        saldo += saldo_pendiente;
+                        saldo_pendiente = 0;
+                    }
+                    else
+                    {
+                        saldo += espacioDisponible;
+                        saldo_pendiente -= espacioDisponible;
+                    }
                 }
 
                 Console.WriteLine($"Su tarjeta ha sido cargada, su saldo es de ${saldo}");
@@ -101,6 +110,7 @@ namespace TpSube
             }
             return false;
         }
+
 
         private bool EsCargaValida(float monto_carga)
         {
@@ -119,26 +129,41 @@ namespace TpSube
 
     public class Medio_Boleto : Tarjeta
     {
-        private DateTime? ultima_vez_usada;  // Registrar el último uso
+        private DateTime? ultima_vez_usada; // Almacena la última vez que se usó la tarjeta
+        private const float costoViaje = 470; // Definir el costo del viaje
 
         public Medio_Boleto(float saldo_inicial) : base(saldo_inicial)
         {
-            ultima_vez_usada = null;
+            ultima_vez_usada = null; // Se inicializa a null
         }
 
-        // Metodo para verificar si han pasado al menos 5 minutos desde el último uso
+        public void RegistrarUso()
+        {
+            if (PuedeUsarse())
+            {
+                ultima_vez_usada = DateTime.Now; // Actualiza la última vez usada
+                actualizar_saldo(costoViaje); // Reduce el saldo al registrar el uso
+            }
+            else
+            {
+                throw new InvalidOperationException("No se puede registrar uso: debe esperar 5 minutos.");
+            }
+        }
+
         public override bool PuedeUsarse()
         {
+            // Permite el uso si nunca se ha utilizado
             if (ultima_vez_usada == null)
             {
                 return true;
             }
 
-            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_vez_usada.Value; // Calculo el tiempo transcurrido
-            return tiempo_transcurrido.TotalMinutes >= 5; // Verifica si han pasado 5 minutos
+            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_vez_usada.Value;
+            return tiempo_transcurrido.TotalMinutes >= 5; // Retorna verdadero si han pasado 5 minutos
         }
-
     }
+
+
 
     public class Gratuito_Jubilados : Tarjeta
     {
@@ -208,3 +233,5 @@ namespace TpSube
         }
     }
 }
+
+
