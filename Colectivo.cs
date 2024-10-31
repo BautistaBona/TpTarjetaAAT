@@ -46,10 +46,6 @@ namespace TpSube
         public float Aplicar_descuentos_x_usos(Tarjeta tarjeta, float tarifa)
         {
             int usos = tarjeta.Obtener_cant_usos_mes();
-            if (usos > 0 && usos <= 29)
-            {
-                return tarifa_basica;
-            }
             if (usos > 29 && usos <= 79)
             {
                 return (float)(tarifa_basica * 0.2);
