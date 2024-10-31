@@ -51,12 +51,8 @@ namespace TpSube
             return tarifa_basica;
         }
 
-        public float Aplicar_descuentos_x_usos(Tarjeta tarjeta, float tarifa){ 
+        public float Aplicar_descuentos_x_usos(Tarjeta tarjeta){ 
             int usos = tarjeta.Obtener_cant_usos_mes();
-            if (usos > 0 && usos <= 29)
-            {
-                return tarifa_basica;
-            }
             if (usos > 29 && usos <= 79)
             {
                 return (float)(tarifa_basica * 0.2);
@@ -82,7 +78,7 @@ namespace TpSube
             float tarifa = obtener_tarifa(tarjeta);
             if (tarjeta.GetType() == typeof(Tarjeta))
             {
-                tarifa = Aplicar_descuentos_x_usos(tarjeta, tarifa);
+                tarifa = tarifa - (tarifa * Aplicar_descuentos_x_usos(tarjeta)) 
             }
             if (tarjeta.saldo - tarifa >= tarjeta.obtener_saldo_negativo_maximo())
             {
