@@ -67,21 +67,16 @@ namespace TpSube
         //Se encarga el colectivo de cobrar el pasaje
         public bool PagarPasaje(Tarjeta tarjeta)
         {
-            if (!tarjeta.PuedeUsarse())           //Primero corroboramos que la tarjeta sea cual sea se puede usar.
-            {                           
-                return false;
-            }
-
-            float tarifa;  
+            float tarifa;
             
             if (tarjeta.GetType() == typeof(Tarjeta))       
             {
                 tarifa = tarifa_basica;
                 tarifa = tarifa * Aplicar_descuentos_x_usos(tarjeta);  //Segundo, se corrobora que la tarjeta sea una tarjeta normal
-            }                                                         //y poder aplicar descuentos x uso
-            else                                                      //En caso de que no, se busca a que franquicia pertenece y si esta en el 
-            {                                                         //horario permitido
-                if (EstaEnHorarioPermitido(tarjeta))
+            }                                                          //y poder aplicar descuentos x uso
+            else                                                      //En caso de que no, se busca a que franquicia pertenece, si esta en el 
+            {                                                         //horario permitido y si puede usarse segun sus limitaciones
+                if (EstaEnHorarioPermitido(tarjeta) && tarjeta.PuedeUsarse())
                 {
                     tarifa = obtener_tarifa(tarjeta);
                 }
