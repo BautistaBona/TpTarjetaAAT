@@ -26,13 +26,19 @@ namespace TpSube
             ultima_vez_usada = null;
         }
 
+        public float obtener_saldo_pendiente ()
+        {
+            return saldo_pendiente;
+        }
+
+
         public float obtener_saldo_negativo_maximo()
         {
             return saldo_negativo_max;
         }
 
         public int Obtener_cant_usos_mes()
-        { 
+        {
             return cantidad_usos_mes;
         }
 
@@ -41,29 +47,26 @@ namespace TpSube
             // si tenemos saldo pendiente, se acredita antes de actualizar
             if (saldo_pendiente > 0)
             {
-                if (monto_a_actualizar >= saldo_pendiente)
-                {
+               if (monto_a_actualizar >= saldo_pendiente){
+                    saldo -= monto_a_actualizar;
                     saldo += saldo_pendiente;
-                    monto_a_actualizar -= saldo_pendiente;
-                    saldo_pendiente = 0;
-                }
-                else
-                {
+                }else{
                     saldo_pendiente -= monto_a_actualizar;
-                    monto_a_actualizar = 0;
+                    
                 }
+            } else { 
+                saldo -= monto_a_actualizar;
             }
-            saldo -= monto_a_actualizar;
         }
 
         public virtual void RegistrarUso()
         {
-            if(ultima_vez_usada.Value.Month != DateTime.Now.Month || ultima_vez_usada == null) 
+            if (ultima_vez_usada.Value.Month != DateTime.Now.Month || ultima_vez_usada == null)
             {
                 cantidad_usos_mes = 0;
             }
             ultima_vez_usada = DateTime.Now;
-            cantidad_usos_mes++; 
+            cantidad_usos_mes++;
         }
 
         public virtual bool PuedeUsarse()
@@ -105,13 +108,15 @@ namespace TpSube
                 else if (saldo_pendiente > 0 && saldo < saldo_max)
                 {
                     float espacioDisponible = saldo_max - saldo;
-                    if(saldo_pendiente <= espacioDisponible){
-                    	saldo += saldo_pendiente;
-                    	saldo_pendiente = 0; 
+                    if (saldo_pendiente <= espacioDisponible)
+                    {
+                        saldo += saldo_pendiente;
+                        saldo_pendiente = 0;
                     }
-                    else{
-                    	saldo += espacioDisponible;
-                    	saldo_pendiente -= espacioDisponible
+                    else
+                    {
+                        saldo += espacioDisponible;
+                        saldo_pendiente -= espacioDisponible;
                     }
                 }
 
@@ -145,12 +150,13 @@ namespace TpSube
         {
             ultima_fecha_viaje = null;
         }
-        
-        
+
+
         public override void RegistrarUso()
         {
-            if(PuedeUsarse()){
-            	ultima_fecha_viaje = DateTime.Now;
+            if (PuedeUsarse())
+            {
+                ultima_fecha_viaje = DateTime.Now;
                 actualizar_saldo(costoViaje);
             }
         }
@@ -166,7 +172,7 @@ namespace TpSube
             TimeSpan tiempo_transcurrido = DateTime.Now - ultima_fecha_viaje.Value; // Calculo el tiempo transcurrido
             return tiempo_transcurrido.TotalMinutes >= 5;
         }
-        
+
     }
 
     public class Gratuito_Jubilados : Tarjeta
@@ -208,7 +214,7 @@ namespace TpSube
         private int viajes_del_dia = 0; // Contador de viajes por día
         private DateTime ultima_fecha_viaje = DateTime.Now.Date; // Fecha del último viaje
 
-        public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) {}
+        public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) { }
 
         public override bool PuedeUsarse()
         {
@@ -237,4 +243,3 @@ namespace TpSube
         }
     }
 }
-

@@ -6,7 +6,7 @@ namespace TpSube
     public abstract class Colectivo
     {
         public string Linea { get; }
-        protected readonly float tarifa_medio; 
+        protected readonly float tarifa_medio;
         protected readonly float tarifa_basica;
         protected readonly float saldo_tarifa_min;
         protected const float tarifa_gratuito = 0;
@@ -24,8 +24,14 @@ namespace TpSube
             lineasRegistradas.Add(linea);
         }
 
-        protected bool EstaEnHorarioPermitido(Tarjeta tarjeta)
-        { 
+        public float obtener_tarifa_medio ()
+        {
+
+            return tarifa_medio;
+
+        }
+        public bool EstaEnHorarioPermitido(Tarjeta tarjeta)
+        {
             DateTime ahora = DateTime.Now;
 
             return ahora.DayOfWeek != DayOfWeek.Saturday &&   // Lunes a viernes de 6 a 22
@@ -68,8 +74,8 @@ namespace TpSube
         public bool PagarPasaje(Tarjeta tarjeta)
         {
             float tarifa;
-            
-            if (tarjeta.GetType() == typeof(Tarjeta))       
+
+            if (tarjeta.GetType() == typeof(Tarjeta))
             {
                 tarifa = tarifa_basica;
                 tarifa = tarifa * Aplicar_descuentos_x_usos(tarjeta);  //Segundo, se corrobora que la tarjeta sea una tarjeta normal
@@ -88,8 +94,9 @@ namespace TpSube
 
             if (tarjeta.saldo - tarifa >= tarjeta.obtener_saldo_negativo_maximo())  //Tercero, se corrobora que el saldo de la tarjeta sea suficiente
             {
-                float monto_a_actualizar = tarjeta.saldo - tarifa;
-                tarjeta.actualizar_saldo(monto_a_actualizar);
+         
+                tarjeta.actualizar_saldo(tarifa);
+
                 tarjeta.RegistrarUso();
                 return true;
             }
@@ -100,7 +107,7 @@ namespace TpSube
 
     public class Urbano : Colectivo
     {
-        public Urbano(string linea, float tarifaBasica) : base(linea, tarifaBasica) {}
+        public Urbano(string linea, float tarifaBasica) : base(linea, tarifaBasica) { }
 
     }
 
