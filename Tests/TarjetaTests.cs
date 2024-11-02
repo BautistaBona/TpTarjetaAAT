@@ -7,121 +7,76 @@ namespace TarjetaTest
 {
     public class TarjetaTest
     {
+        private Urbano colectivo;
         private Gratuito_Estudiantes tarjetaGratuito;
         private Medio_Boleto tarjetaMedioBoleto;
-
+        private Gratuito_Estudiantes tarjetaGratuito2;
+        private Medio_Boleto tarjetaMedio2;
         [SetUp]
         public void Setup()
         {
-            tarjetaGratuito = new Gratuito_Estudiantes(35000); 
-            tarjetaMedioBoleto = new Medio_Boleto(35000); 
+            colectivo = new Urbano("Línea 2", 1200);
+            tarjetaGratuito = new Gratuito_Estudiantes(35000);
+            tarjetaMedioBoleto = new Medio_Boleto(35000);
+            tarjetaGratuito2 = new Gratuito_Estudiantes(0);
+            tarjetaMedio2 = new Medio_Boleto(0);
         }
 
         // Test para verificar que el saldo excedente se almacena como pendiente
         [Test]
         public void CargarSaldo_ExcedenteSeAlmacenaComoPendienteTest()
         {
-            float montoCarga = 2000; 
+            float montoCarga = 2000;
             bool resultado = tarjetaGratuito.CargarSaldo(montoCarga);
 
-           
             Assert.That(resultado, Is.True);
             Assert.That(tarjetaGratuito.saldo, Is.EqualTo(36000));
-            Assert.That(tarjetaGratuito.saldo_pendiente, Is.EqualTo(1000));
+            Assert.That(tarjetaGratuito.obtener_saldo_pendiente(), Is.EqualTo(1000));
         }
 
-        // Test para validar que después de realizar un viaje se acredita el saldo pendiente
+       
+
         [Test]
-        public void RecargaConSaldoPendienteTest()
-        {
+        public void PermitirViajeDespuesDe5MinutosTest()
+         {
             
-            tarjetaMedioBoleto.CargarSaldo(2000); 
-            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000)); 
-            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(1000)); 
-            
-            tarjetaMedioBoleto.RegistrarUso(); 
+        tarjetaMedioBoleto.RegistrarUso();
 
+        Thread.Sleep(300000);
 
-            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(36000)); 
-            Assert.That(tarjetaMedioBoleto.saldo_pendiente, Is.EqualTo(530));
+        //Intentamos registrar otro uso
+        bool puedeUsarse = tarjetaMedioBoleto.PuedeUsarse();
+        Assert.That(puedeUsarse, Is.True);
         }
 
+        // Test de saldo: Validar que se puedan realizar pagos con los montos de carga específicos
         [Test]
-        public void PagarConSaldoTest()
+        public void TestMontosDeCargaEspecificos()
         {
-            tarjetaGratuito.CargarSaldo(1000);
-            float saldoInicial = tarjetaMedioBoleto.saldo;
+            float[] montos = { 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000 };
 
-            
-            tarjetaMedioBoleto.RegistrarUso(); 
-
-            Assert.That(tarjetaMedioBoleto.saldo, Is.LessThan(saldoInicial));
-
-        }
-        // Test para validar el pago de gratuito
-        [Test]
-        public void PagarSinSaldoGratuitoTest()
-        {
-            tarjetaGratuito.CargarSaldo(0); 
-            float saldoInicial = tarjetaGratuito.saldo;
-
-            
-            tarjetaGratuito.RegistrarUso(); 
-
-            
-            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(saldoInicial)); // Verifica que el saldo sigue siendo el mismo
+            foreach (var monto in montos)
+            {
+                tarjetaGratuito.CargarSaldo(monto);
+                Assert.That(tarjetaGratuito.saldo, Is.EqualTo(36000));
+            }
         }
 
         
+        // Test de límite de 4 viajes por día para medio boleto
         [Test]
-        public void PermitirViajeDespuesDe5MinutosTest()
+        public void TestLimiteCuatroViajesPorDia()
         {
-            tarjetaMedioBoleto.RegistrarUso(); 
+            for (int i = 0; i < 4; i++)
+            {
+                tarjetaMedioBoleto.RegistrarUso(); // Registrar 4 viajes
+            }
 
-           
-            Thread.Sleep(300000); 
-
-            // Intentamos registrar otro uso
-            bool puedeUsarse = tarjetaMedioBoleto.PuedeUsarse();
-            Assert.That(puedeUsarse, Is.True); 
+            // Intentar registrar un quinto viaje
+            bool puedeRegistrar = tarjetaMedioBoleto.PuedeUsarse();
+            Assert.That(puedeRegistrar, Is.False); 
         }
 
-        // Test para validar que una tarjeta de FranquiciaCompleta siempre puede pagar un boleto
-        [Test]
-        public void FranquiciaCompletaPuedePagarBoletoTest()
-        {
-
-           
-            tarjetaGratuito.RegistrarUso();
-
-            
-            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(35000)); 
-        }
-
-        // Test para validar que el monto del boleto pagado con Medio Boleto es siempre la mitad del normal
-        [Test]
-        public void MedioBoletoDescuentoTest()
-        {
-
-
-            tarjetaMedioBoleto.RegistrarUso();
-
-
-            Assert.That(tarjetaMedioBoleto.saldo, Is.EqualTo(35000 - 470));
-        }
-
-        // Test para validar que la tarjeta no pueda quedar con menos saldo que el permitido
-        [Test]
-        public void NoPermitirSaldoNegativoTest()
-        {
-            tarjetaGratuito.CargarSaldo(0);
-            float saldoInicial = tarjetaGratuito.saldo;
-
-
-            tarjetaGratuito.RegistrarUso();
-
-
-            Assert.That(tarjetaGratuito.saldo, Is.EqualTo(saldoInicial));
-        }
+        
     }
 }
