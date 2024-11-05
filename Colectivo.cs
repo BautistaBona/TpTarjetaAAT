@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using ManejoDeTiempos;
 namespace TpSube
 {
     public abstract class Colectivo
@@ -24,15 +24,15 @@ namespace TpSube
             lineasRegistradas.Add(linea);
         }
 
-        public float obtener_tarifa_medio ()
+        public float obtener_tarifa_medio()
         {
 
             return tarifa_medio;
 
         }
-        public bool EstaEnHorarioPermitido(Tarjeta tarjeta)
+        public bool EstaEnHorarioPermitido(Tarjeta tarjeta, Tiempo tiempo)
         {
-            DateTime ahora = DateTime.Now;
+            DateTime ahora = tiempo.Now();
 
             return ahora.DayOfWeek != DayOfWeek.Saturday &&   // Lunes a viernes de 6 a 22
                    ahora.DayOfWeek != DayOfWeek.Sunday &&
@@ -71,18 +71,25 @@ namespace TpSube
 
 
         //Se encarga el colectivo de cobrar el pasaje
-        public bool PagarPasaje(Tarjeta tarjeta)
+        public bool PagarPasaje(Tarjeta tarjeta, Tiempo tiempo)
         {
             float tarifa;
 
             if (tarjeta.GetType() == typeof(Tarjeta))
             {
                 tarifa = tarifa_basica;
-                tarifa = tarifa * Aplicar_descuentos_x_usos(tarjeta);  //Segundo, se corrobora que la tarjeta sea una tarjeta normal
+
+                if(Aplicar_descuentos_x_usos(tarjeta) != 1)
+                {
+
+                    tarifa -= tarifa * Aplicar_descuentos_x_usos(tarjeta);
+
+                }
+                                                                        //Segundo, se corrobora que la tarjeta sea una tarjeta normal
             }                                                          //y poder aplicar descuentos x uso
             else                                                      //En caso de que no, se busca a que franquicia pertenece, si esta en el 
             {                                                         //horario permitido y si puede usarse segun sus limitaciones
-                if (EstaEnHorarioPermitido(tarjeta) && tarjeta.PuedeUsarse())
+                if (EstaEnHorarioPermitido(tarjeta, tiempo) && tarjeta.PuedeUsarse(tiempo))
                 {
                     tarifa = obtener_tarifa(tarjeta);
                 }
@@ -94,10 +101,10 @@ namespace TpSube
 
             if (tarjeta.saldo - tarifa >= tarjeta.obtener_saldo_negativo_maximo())  //Tercero, se corrobora que el saldo de la tarjeta sea suficiente
             {
-         
+
                 tarjeta.actualizar_saldo(tarifa);
 
-                tarjeta.RegistrarUso();
+                tarjeta.RegistrarUso(tiempo);
                 return true;
             }
 

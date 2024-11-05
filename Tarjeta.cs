@@ -1,4 +1,5 @@
 using System;
+using ManejoDeTiempos;
 
 namespace TpSube
 {
@@ -26,7 +27,7 @@ namespace TpSube
             ultima_vez_usada = null;
         }
 
-        public float obtener_saldo_pendiente ()
+        public float obtener_saldo_pendiente()
         {
             return saldo_pendiente;
         }
@@ -47,29 +48,35 @@ namespace TpSube
             // si tenemos saldo pendiente, se acredita antes de actualizar
             if (saldo_pendiente > 0)
             {
-               if (monto_a_actualizar >= saldo_pendiente){
+                if (monto_a_actualizar >= saldo_pendiente)
+                {
                     saldo -= monto_a_actualizar;
                     saldo += saldo_pendiente;
-                }else{
-                    saldo_pendiente -= monto_a_actualizar;
-                    
+                    saldo_pendiente = 0;
                 }
-            } else { 
+                else
+                {
+                    saldo_pendiente -= monto_a_actualizar;
+
+                }
+            }
+            else
+            {
                 saldo -= monto_a_actualizar;
             }
         }
 
-        public virtual void RegistrarUso()
+        public virtual void RegistrarUso(Tiempo tiempo)
         {
-            if (ultima_vez_usada.Value.Month != DateTime.Now.Month || ultima_vez_usada == null)
+            if (ultima_vez_usada == null || ultima_vez_usada.Value.Month != tiempo.Now().Month )
             {
                 cantidad_usos_mes = 0;
             }
-            ultima_vez_usada = DateTime.Now;
+            ultima_vez_usada = tiempo.Now();
             cantidad_usos_mes++;
         }
 
-        public virtual bool PuedeUsarse()
+        public virtual bool PuedeUsarse(Tiempo tiempo)
         {
             return true;
         }
@@ -145,6 +152,7 @@ namespace TpSube
     {
         private DateTime? ultima_fecha_viaje;  // Registrar el último uso
         private const float costoViaje = 470;
+        private int viajes_del_dia = 0;
 
         public Medio_Boleto(float saldo_inicial) : base(saldo_inicial)
         {
@@ -152,25 +160,42 @@ namespace TpSube
         }
 
 
-        public override void RegistrarUso()
+        public override void RegistrarUso(Tiempo tiempo)
         {
-            if (PuedeUsarse())
-            {
-                ultima_fecha_viaje = DateTime.Now;
-                actualizar_saldo(costoViaje);
-            }
+            
+          
+                ultima_fecha_viaje = tiempo.Now();
+                viajes_del_dia++;
+           
         }
+       
 
         // Metodo para verificar si han pasado al menos 5 minutos desde el último uso
-        public override bool PuedeUsarse()
+        public override bool PuedeUsarse(Tiempo tiempo)
         {
-            if (ultima_fecha_viaje == null)
+
+            if (ultima_fecha_viaje != null) {
+                if (ultima_fecha_viaje.Value.Day != tiempo.Now().Day)
+                {
+                    viajes_del_dia = 0;
+                    ultima_fecha_viaje = tiempo.Now();
+                }
+
+            
+            
+
+                    TimeSpan tiempo_transcurrido = tiempo.Now() - ultima_fecha_viaje.Value;
+                    if (viajes_del_dia < 4 && tiempo_transcurrido.TotalMinutes >= 5)
+                    {
+                        return true;
+                    }
+            
+               return false;
+      
+            }else
             {
                 return true;
             }
-
-            TimeSpan tiempo_transcurrido = DateTime.Now - ultima_fecha_viaje.Value; // Calculo el tiempo transcurrido
-            return tiempo_transcurrido.TotalMinutes >= 5;
         }
 
     }
@@ -178,23 +203,21 @@ namespace TpSube
     public class Gratuito_Jubilados : Tarjeta
     {
         private int viajes_del_dia = 0; // Contador de viajes por día
-        private DateTime ultima_fecha_viaje = DateTime.Now.Date; // Fecha del último viaje
-
+        private DateTime ultima_fecha_viaje;
         public Gratuito_Jubilados(float saldo_inicial) : base(saldo_inicial) { }
 
-        public override bool PuedeUsarse()
+        public override bool PuedeUsarse(Tiempo tiempo)
         {
-            DateTime hoy = DateTime.Now.Date;
-
+           
             // Si es un nuevo día, reinicio el contador de viajes
-            if (hoy != ultima_fecha_viaje)
+            if (tiempo.Now() != ultima_fecha_viaje)
             {
                 viajes_del_dia = 0;
-                ultima_fecha_viaje = hoy;
+                ultima_fecha_viaje = tiempo.Now();
             }
 
             // Verifico si se pueden hacer más viajes
-            if (viajes_del_dia <= 2)
+            if (viajes_del_dia < 2)
             {
                 return true;
             }
@@ -203,7 +226,7 @@ namespace TpSube
             return false;
         }
 
-        public override void RegistrarUso()
+        public override void RegistrarUso(Tiempo tiempo)
         {
             viajes_del_dia++;
         }
@@ -212,23 +235,23 @@ namespace TpSube
     public class Gratuito_Estudiantes : Tarjeta
     {
         private int viajes_del_dia = 0; // Contador de viajes por día
-        private DateTime ultima_fecha_viaje = DateTime.Now.Date; // Fecha del último viaje
+        private DateTime ultima_fecha_viaje;
 
         public Gratuito_Estudiantes(float saldo_inicial) : base(saldo_inicial) { }
 
-        public override bool PuedeUsarse()
+        public override bool PuedeUsarse(Tiempo tiempo)
         {
-            DateTime hoy = DateTime.Now.Date;
+           
 
             // Si es un nuevo día, reinicio el contador de viajes
-            if (hoy != ultima_fecha_viaje)
+            if (tiempo.Now() != ultima_fecha_viaje)
             {
                 viajes_del_dia = 0;
-                ultima_fecha_viaje = hoy;
+                ultima_fecha_viaje = tiempo.Now();
             }
 
             // Verifico si se pueden hacer más viajes
-            if (viajes_del_dia <= 2)
+            if (viajes_del_dia < 2)
             {
                 return true;
             }
@@ -237,7 +260,7 @@ namespace TpSube
             return false;
         }
 
-        public override void RegistrarUso()
+        public override void RegistrarUso(Tiempo tiempo)
         {
             viajes_del_dia++;
         }
