@@ -3,6 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\urbano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:urbano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\interurbano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:interurbano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\boletotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\tiempo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:tiempo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\colectivotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\gratuitoestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:gratuitoestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,28 +48,10 @@
       "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:medioboleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\tiempo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:tiempo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\boletotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\tarjetatests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\tiempofalso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,11 +65,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "Urbano.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Urbano.cs",
+              "RelativeDocumentMoniker": "Urbano.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Urbano.cs",
+              "RelativeToolTip": "Urbano.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T02:57:15.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InterUrbano.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\InterUrbano.cs",
+              "RelativeDocumentMoniker": "InterUrbano.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\InterUrbano.cs",
+              "RelativeToolTip": "InterUrbano.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T02:57:08.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "GratuitoJubilados.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\GratuitoJubilados.cs",
               "RelativeDocumentMoniker": "GratuitoJubilados.cs",
@@ -69,25 +103,24 @@
               "RelativeToolTip": "GratuitoJubilados.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAYwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T02:03:00.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T02:03:00.517Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "GratuitoEstudiantes.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\GratuitoEstudiantes.cs",
               "RelativeDocumentMoniker": "GratuitoEstudiantes.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\GratuitoEstudiantes.cs",
               "RelativeToolTip": "GratuitoEstudiantes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T02:02:28.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "MedioBoleto.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\MedioBoleto.cs",
               "RelativeDocumentMoniker": "MedioBoleto.cs",
@@ -95,12 +128,11 @@
               "RelativeToolTip": "MedioBoleto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T02:02:08.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T02:02:08.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "TiempoFalso.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TiempoFalso.cs",
               "RelativeDocumentMoniker": "..\\TpSubeTests\\TiempoFalso.cs",
@@ -108,12 +140,11 @@
               "RelativeToolTip": "..\\TpSubeTests\\TiempoFalso.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T01:52:50.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T01:52:50.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Tiempo.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Tiempo.cs",
               "RelativeDocumentMoniker": "Tiempo.cs",
@@ -127,19 +158,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Colectivo.cs",
-              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\Colectivo.cs",
-              "RelativeDocumentMoniker": "..\\TpSubeTests\\Colectivo.cs",
-              "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\Colectivo.cs",
-              "RelativeToolTip": "..\\TpSubeTests\\Colectivo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAANoAAAABAAAAAAAAAA==",
+              "Title": "ColectivoTest.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\ColectivoTest.cs",
+              "RelativeDocumentMoniker": "..\\TpSubeTests\\ColectivoTest.cs",
+              "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\ColectivoTest.cs",
+              "RelativeToolTip": "..\\TpSubeTests\\ColectivoTest.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAA7wNoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T01:50:02.875Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "TarjetaTests.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TarjetaTests.cs",
               "RelativeDocumentMoniker": "..\\TpSubeTests\\TarjetaTests.cs",
@@ -147,12 +178,11 @@
               "RelativeToolTip": "..\\TpSubeTests\\TarjetaTests.cs",
               "ViewState": "AgIAAFYAAAAAAAAAAAAUwHAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T01:49:31.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T01:49:31.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "BoletoTests.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\BoletoTests.cs",
               "RelativeDocumentMoniker": "..\\TpSubeTests\\BoletoTests.cs",
@@ -165,20 +195,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Boleto.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Boleto.cs",
               "RelativeDocumentMoniker": "Boleto.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Boleto.cs",
               "RelativeToolTip": "Boleto.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAywCUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAiwCUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T01:48:47.875Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Tarjeta.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Tarjeta.cs",
               "RelativeDocumentMoniker": "Tarjeta.cs",
@@ -186,38 +216,36 @@
               "RelativeToolTip": "Tarjeta.cs",
               "ViewState": "AgIAAIYAAAAAAAAAAAAiwJQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T01:48:40.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T01:48:40.436Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "Colectivo.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Colectivo.cs",
               "RelativeDocumentMoniker": "Colectivo.cs",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Colectivo.cs",
               "RelativeToolTip": "Colectivo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAuwHAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T01:48:29.918Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TpSubeTests",
+              "DocumentIndex": 8,
+              "Title": "TpSubeTests.csproj",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TpSubeTests.csproj",
               "RelativeDocumentMoniker": "..\\TpSubeTests\\TpSubeTests.csproj",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TpSubeTests.csproj",
               "RelativeToolTip": "..\\TpSubeTests\\TpSubeTests.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-06T01:47:24.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T01:47:24.564Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -225,8 +253,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T01:44:52.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T01:44:52.194Z"
             }
           ]
         }

@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\tpsubetests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\gratuitoestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|solutionrelative:gratuitoestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AADA5A56-CDB1-4F6C-B14F-512BA0263096}|..\\TpSubeTests\\TpSubeTests.csproj|c:\\users\\pc\\desktop\\tp\\tpsubetests\\tpsubetests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AC9A7C1E-2427-4CB4-BD69-4319585DAF3D}|TpSube.csproj|c:\\users\\pc\\desktop\\tp\\tpsube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,7 +57,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -74,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GratuitoEstudiantes.cs",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSube\\GratuitoEstudiantes.cs",
               "RelativeDocumentMoniker": "GratuitoEstudiantes.cs",
@@ -204,13 +204,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "TpSubeTests",
               "DocumentMoniker": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TpSubeTests.csproj",
               "RelativeDocumentMoniker": "..\\TpSubeTests\\TpSubeTests.csproj",
               "ToolTip": "C:\\Users\\Pc\\Desktop\\TP\\TpSubeTests\\TpSubeTests.csproj",
               "RelativeToolTip": "..\\TpSubeTests\\TpSubeTests.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-11-06T01:47:24.564Z",
               "EditorCaption": ""

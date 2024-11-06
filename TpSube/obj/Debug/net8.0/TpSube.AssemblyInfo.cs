@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TpSube")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+741dd0b883f9c75571967243b9f5d198dbbdd6d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("TpSube")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TpSube")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

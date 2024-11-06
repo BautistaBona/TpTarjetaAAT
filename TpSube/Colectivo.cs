@@ -112,15 +112,4 @@ namespace TpSube
         }
     }
 
-    public class Urbano : Colectivo
-    {
-        public Urbano(string linea, float tarifaBasica) : base(linea, tarifaBasica) { }
-
-    }
-
-    public class InterUrbano : Colectivo
-    {
-        public InterUrbano(string linea, float tarifaBasica) : base(linea, tarifaBasica) { }
-
-    }
 }
