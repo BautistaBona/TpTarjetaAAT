@@ -1,0 +1,14 @@
+C:\Users\Pc\Desktop\TP\TpSube\bin\Debug\net8.0\TpSube.exe
+C:\Users\Pc\Desktop\TP\TpSube\bin\Debug\net8.0\TpSube.deps.json
+C:\Users\Pc\Desktop\TP\TpSube\bin\Debug\net8.0\TpSube.runtimeconfig.json
+C:\Users\Pc\Desktop\TP\TpSube\bin\Debug\net8.0\TpSube.dll
+C:\Users\Pc\Desktop\TP\TpSube\bin\Debug\net8.0\TpSube.pdb
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.AssemblyInfoInputs.cache
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.AssemblyInfo.cs
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.csproj.CoreCompileInputs.cache
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.dll
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\refint\TpSube.dll
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.pdb
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\TpSube.genruntimeconfig.cache
+C:\Users\Pc\Desktop\TP\TpSube\obj\Debug\net8.0\ref\TpSube.dll
